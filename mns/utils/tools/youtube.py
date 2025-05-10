@@ -2,6 +2,7 @@ import os.path as osp
 import re
 import requests
 import json
+from dotenv import load_dotenv    
 from PIL import Image 
 from io import BytesIO
 from youtube_transcript_api import YouTubeTranscriptApi
@@ -176,7 +177,6 @@ if __name__ == '__main__':
 
     import os
     import os.path as osp
-    from dotenv import load_dotenv    
     from mns.utils.helpers.fileio import read_yaml
 
     youtube = Youtube()
