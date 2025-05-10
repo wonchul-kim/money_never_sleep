@@ -8,9 +8,11 @@ PARENT = FILE.parent
 README = (PARENT / 'README.md').read_text(encoding='utf-8')
 
 def get_version():
-    file = PARENT / 'youtube/__init__.py'
+    file = PARENT / 'mns/__init__.py'
     
-    return re.search(r'^__version__ = [\'"]([^\'"]*)[\'"]', file.read_text(encoding='utf-8'), re.M)[1]
+    version = re.search(r'^__version__ = [\'"]([^\'"]*)[\'"]', file.read_text(encoding='utf-8'), re.M)[1]
+
+    return version if version is not None else "0.0.0"
 
 def parse_requirements(file_path: Path):
     requirements = []
@@ -24,7 +26,7 @@ def parse_requirements(file_path: Path):
 
 try:
     setup(
-        name='youtube',
+        name='mns',
         version='{{VERSION_PLACEHOLDER}}',
         python_requires='>=3.9',
         description=('Template for Python Athena'),
@@ -39,7 +41,7 @@ try:
     )
 except:
     setup(
-        name='youtube',
+        name='mns',
         version=get_version(),
         python_requires='>=3.9',
         description=('Template for Python Athena'),
@@ -53,3 +55,4 @@ except:
         # install_requires=["nvidia-ml-py3"],
         install_requires=parse_requirements(PARENT / 'requirements.txt') + ["nvidia-ml-py3"],
     )
+    
