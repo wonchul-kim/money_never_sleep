@@ -22,7 +22,6 @@ class Youtube:
             raise RuntimeError(f"CANNOT load env file: {env_filename}")
         
         self._google_cloud_api_key = os.getenv("GOOGLE_CLOUD_API_KEY")
-        YOUTUBE_SERVICE_ACCOUNT_FILE = os.getenv("YOUTUBE_SERVICE_ACCOUNT_FILE")
         self.verbose = verbose
 
     def extract_channel_id(self, url):
